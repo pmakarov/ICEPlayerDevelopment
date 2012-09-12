@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceSingleSelect" design="true" scoreType="noScore">
+        <titleText><![CDATA[What Percentage of Drinkers?]]></titleText>
+		<questionText><![CDATA[What percentage of drinkers drink 30% of the alcohol?]]></questionText>
+		<instructionText><![CDATA[Choose the best answer, then click Submit.]]></instructionText>
+		<feedback>
+			<feedbackText valueID="v1"><![CDATA[That’s right! 70% of the people who drink in the United States account for just 10% of all the alcohol consumed in the U.S..]]></feedbackText>
+			<feedbackText valueID="v2"><![CDATA[The answer can be surprising. 70% of the people who drink in the United States account for just 10% of all the alcohol consumed in the U.S..]]></feedbackText>
+		</feedback>
+		<multimedia src="assets/media/U1L9C15.swf"/>
+		<audio src="assets/media/MC_SINGLE_QUESTION.mp3" />
+		<remediation>
+		    <file href="remFile.htm" windowOptions="height=500,width=300,top=100,left=400"/>
+		    <linkText>For more information about this topic click here!</linkText>
+		</remediation>
+		<choice-collection>
+			<choice id="c1" valueID="v2">
+				<text><![CDATA[10]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c2" valueID="v2">
+				<text><![CDATA[20]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c3" valueID="v2">
+				<text><![CDATA[30]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c4" valueID="v2">
+				<text><![CDATA[40]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c5" valueID="v2">
+				<text><![CDATA[50]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c6" valueID="v2">
+				<text><![CDATA[60]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c7" valueID="v1">
+				<text><![CDATA[70]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c8" valueID="v2">
+				<text><![CDATA[80]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c9" valueID="v2">
+				<text><![CDATA[90]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c10" valueID="v2">
+				<text><![CDATA[100]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+		</choice-collection>
+		<value-collection>
+			<value id="v1"><![CDATA[true]]></value>
+			<value id="v2"><![CDATA[false]]></value>
+		</value-collection>
+</evaluation>

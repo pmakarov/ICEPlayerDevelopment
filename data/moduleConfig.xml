@@ -1,0 +1,143 @@
+﻿<?xml version="1.0"?>
+<ICEObject>
+    <system>
+        <playerMode>presentation</playerMode>
+        <contentMode>flas</contentMode>
+        <theme>ice</theme>
+        <branding>DOI_Seal_55x54.png</branding>
+        <UIWidgets>
+            <search/>
+            <inspectorPanel align="left">
+                <navigation/>
+                <resources/>
+                <acronyms/>
+            </inspectorPanel>
+            <toolBar dockable="true">
+                <previousButton/>
+                <nextButton/>
+                <notes/>
+                <progressBar/>
+            </toolBar>
+            <dropDownMenu>
+                <menuItem name="Session">
+                    <option name="Save">
+                        <option>BookMark</option>
+                        <option>Notes</option>
+                    </option>
+                    <option name="Notes">
+                        <option name="Print">
+                            <option>Current Page</option>
+                            <option>All Notes</option>
+                        </option>
+                        <option>Notes</option>
+                    </option>
+                </menuItem>
+                <menuItem name="Help">
+                    <option>Support</option>
+                    <option>Help Document</option>
+                    <option>ReadMe</option>
+                </menuItem>
+                <menuItem name="Settings">
+                    <option>Player</option>
+                    <option>Content</option>
+                    <option>Media</option>
+                </menuItem>
+            </dropDownMenu>
+        </UIWidgets>
+    </system>
+    <module id="U1L1">
+        <title>Department of the Interior Sample Course</title>
+        <node-collection>
+            <node id="100" type="">
+                <title>Department of the Interior Sample Course</title>
+                <node-collection>
+                     <node id="1" type="">
+                        <title>DOI University: The 80- Day Federal Hiring Process</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S010.html" />
+                    </node>
+					 <node id="1.5" type="">
+                        <title>Summary</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S015.html" />
+                    </node>
+					<node id="2" type="">
+                        <title>Introduction Video</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S020.html" />
+                    </node>
+					<node id="3" type="">
+                        <title>Email from OPM</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S030.html" />
+                    </node>
+					<node id="4" type="">
+                        <title>Email from OPM (Continued)</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S040.html" />
+                    </node>
+					<node id="5" type="">
+                        <title>Interruption Video</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S050.html" />
+                    </node>
+					<node id="6" type="">
+                        <title>Email from OPM 2</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S060.html" />
+                    </node>
+					<node id="7" type="">
+                        <title>The Hiring Process- Step 1</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S070.html" />
+                    </node>
+					<node id="8" type="">
+                        <title>The Hiring Process- Step 2</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S080.html" />
+                    </node>
+					<node id="9" type="">
+                        <title>The Hiring Process- Step 3</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S090.html" />
+                    </node>
+					<node id="10" type="">
+                        <title>The Hiring Process- Step 4</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S100.html" />
+                    </node>
+					<node id="11" type="">
+                        <title>The Hiring Process- Step 5-9</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S110.html" />
+                    </node>
+					<node id="12" type="">
+                        <title>The Hiring Process- Step 10</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S120.html" />
+                    </node>
+					<node id="13" type="">
+                        <title>The Hiring Process- Step 11-14</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S130.html" />
+                    </node>
+					<node id="14" type="">
+                        <title>Knowledge Check Video</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                        <file src="assets/L01S140.html" />
+                    </node>
+                    <node id="15" type="evaluation">
+                        <title>Evaluation</title>
+                        <!--<file src="assets/launchStrongChoices.htm" />-->
+                       <!-- <file src="MTDA.swf" />-->
+                        <file src="U1L9C15.xml" />
+                    </node>
+                    <node id="106" type="">
+                        <title>Strong Choices Trailer</title>
+                        <file src="assets/quizmockup.html" />-
+                    </node>
+                </node-collection>
+            </node>
+        </node-collection>
+    </module>
+</ICEObject>

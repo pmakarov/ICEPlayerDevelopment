@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene type="simpleScene">
+	<element id="WWV010" type="video">
+			<title>Teamwork in Action</title>
+			<file src="assets/media/video/WWV010.f4v" />
+	</element>
+</scene>

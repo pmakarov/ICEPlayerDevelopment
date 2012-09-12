@@ -1,0 +1,505 @@
+
+	html,body {
+		background: #222222;
+		margin: 0;
+		padding: 0;
+		color: #EEEEEE;
+		overflow:auto;
+		font-family:Verdana, Geneva, sans-serif ; 
+		font-size:11px;
+	
+   }
+   
+   
+	a
+    {
+        font-weight:bold;
+		color:#FFFFFF;
+		text-decoration:none;
+		margin-top:10px;
+    }
+    a:visited
+    {
+        color:#CCCEDB;
+        text-decoration:none;
+    }   
+    a:hover
+    {
+        color:#EEE;
+    } 
+	
+	h2
+	{
+		margin-bottom:10px;
+	}
+	
+	/*.logo
+        {
+        	position:absolute;
+        	top:0px;
+        	right:0px;
+        	width:270px;
+        	padding:12px 10px 0px 0px;
+        }*/
+        
+		.title
+		{
+			position:relative;
+			top:0px;
+    		left:20px;
+			width:100%;
+			padding-top:20px;
+			padding-bottom:20px;
+			overflow: hidden;
+			margin: 0 auto;			
+		}
+		
+		#header
+		{
+			position:absolute;
+			top:0px;
+    		left:0px;
+			width:100%;
+			overflow: hidden;
+			margin: 0 auto;
+			z-index:4;
+		}
+		
+		
+		#background
+		{
+    		position:absolute;
+    		top:0px;
+    		left:0px;
+    		width:100%;
+    		height:100%;
+    		text-align:center;    		
+    		overflow: hidden;
+    		margin: 0 auto; 
+    		z-index:-1;
+		}
+	
+	/*----related to infopanel---*/	
+	
+		#menu
+		{
+			position:absolute;
+			padding-top:90px;
+			padding-left:20px;
+			overflow:auto;
+			z-index:2;
+		}
+/*------------------------------*/
+		
+		#player
+		{
+		    display:block;
+		    position:absolute;
+		    margin: 0 auto;
+		    top:0px;
+		    left:0px;
+		    width:100%;
+		    height:100%;
+		    overflow:hidden;
+		    z-index:1;
+		}
+	
+		
+/*---if using JQuery UI this is nessisary. Controls the position of the icons in the buttons
+		
+		#close,#info, #full
+		{
+			margin-top:6px;
+			margin-left:6px;	
+		}
+		
+		#prev, #next
+		{
+			margin-top:6px;
+			margin-left:6px;
+			
+		}-------------------------------*/
+		
+		#infoHeader
+		{
+			background-image:url(../media/bggrad.png);
+			padding-left:4px;
+			font-size:13px;
+			line-height:28px;
+		}
+		
+/*-------------START TITLE BAR TOP OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+		#titleBar
+		{
+		    display:block;
+		    border:0px;
+		    position:relative;
+		    font-size:13px;
+		    top:0px;
+		    left:0px;
+		    width:100%;
+		    height:30px;
+		    padding:0;
+		   /* background-color:#000000;
+		    background-image:url('../media/blackBar.gif');
+		     */
+		}
+		
+		#titleBar.ICESystemBar { 
+			background-image:url(../media/bggrad.png);
+			background-repeat: repeat-x;
+		
+		}
+
+		#branding
+				{  position:relative;
+					padding-top:2px;
+					padding-left:2px;
+					float:left;
+					overflow:hidden;
+				   /* width:148px;
+					height:30px;*/
+				}
+/*-------------SYSTEM CONTROL CONTAINER FOR BUTTONS----------------*/		
+		
+		#systemControlContainer
+		{
+		    display:block;
+		    position:absolute;
+		    top:0px;
+		    right:0px;
+		    width:104px;
+		    height:30px;
+		    text-align:right;
+		 
+		}		
+/*-------------SYSTEM BUTTONS----------------*/		
+		#helpMenuButton
+		{
+		    display:block;
+		    position:relative;
+		    float:right;
+		    width:48px;
+		    height:22px;
+		    /*text-align:center;
+		    line-height: 28px;*/
+		    -moz-user-select: none;
+            -khtml-user-select: none;
+            -user-select: none;
+		}
+		
+		#closeButton
+		{
+		    display:block;
+		    position:relative;
+		    float:right;
+		    width:24px;
+		    height:22px;
+		}
+		
+		
+		#helpMenuButton.systemHelp, #closeButton.systemClose 
+		{
+			height:22px;
+			margin-top:3px;
+			background-image:url(../media/btnTemplate.png);
+			}
+		
+		#helpMenuButton.systemHelp
+		{
+			background-position: 0px 0px;
+			width:48px;
+			}
+		
+		#helpMenuButton.systemHelp:hover
+		{
+			background-position: -48px 0px;	
+			width:48px;
+			}
+	
+		#closeButton.systemClose
+		{
+			background-position: -102px 0px;
+			width:24px;
+			
+			}
+		
+		#closeButton.systemClose:hover
+		{
+			background-position: -125px 0px;
+			width:24px;
+			
+			}
+
+/*-------------END TITLE BAR TOP OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+
+
+
+/*------------- START TOOL BAR BOTTOM OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+		
+		#toolBar
+		{
+   		    border:0px;
+   		    padding:0;
+		    position:fixed;
+		    bottom:0px;
+		    left:0px;
+		    width:100%;
+		    height:30px;
+		}
+		
+		#toolBar.ICEToolBar { 
+			background-image:url(../media/bggrad.png);
+			background-repeat: repeat-x;
+		
+		}
+		
+		#infoButton
+		{
+		    display:block;
+		    position:absolute;
+		    left:0px;
+		    top:3px;
+		    height:29px;
+			background-image:url(../media/btnTemplate.png);
+		}
+		
+		#infoButton.toolInfo
+		{
+			background-position: 0px -23px;
+			width:95px;
+			}
+		
+		#infoButton.toolInfo:hover
+		{
+			background-position: -94px -23px;
+			width:95px;
+			}
+		
+/*----NAVIGATION CONTAINER START HERE --------------------*/
+		
+		#middleNavigationConsole
+		{
+		  position:relative;
+		  height:30px;
+		  width:215px;
+		  margin:0 auto;
+			
+		}
+	
+/*----NAVIGATION BUTTONS START HERE --------------------*/
+	
+		#nextButton, #previousButton
+		{
+			float:right;
+			margin-top:2px;
+		    width:30px;
+			height:27px;
+			background-image:url(../media/btnTemplate.png);
+		}
+		
+		#previousButton
+		{
+			background-position: -188px -22px;
+			width:26px;
+			margin-right:2px;
+			}
+		
+		#previousButton:hover
+		{
+			background-position: -214px -22px;
+			width:26px;
+			}
+			
+		#nextButton.toolNext
+		{
+			background-position: -242px -22px;
+			width:26px;
+			margin-left:2px;
+
+			
+			}
+		
+		#nextButton.toolNext:hover
+		{
+			background-position: -268px -22px;
+			width:26px;
+			
+			}
+		
+/*------START PROGRESS CONTAINER--------------*/		
+		#progressContainer
+		{
+			position:relative;
+			float:right;
+		    width:150px;
+		    height:29px;
+			margin-top:3px;
+		    background-image:url(../media/btnTemplate.png);
+			background-repeat:no-repeat;
+			background-position: 0px -54px;
+		}
+		
+		/*#fullScreenButton
+			{
+				display:block;
+				position:absolute;
+				right:0px;
+				top:0px;
+				width:30px;
+				height:28px;
+				background-color:#C0C0C0;
+			}*/
+			
+		#pText
+		{
+		    position:relative;
+	        font-size:12px;
+	        font-weight:lighter;
+	        height:9px;
+	        color:#0CF;
+	        margin-left:auto;
+	        margin-right:auto;
+	        margin-bottom:-10px;
+		    margin-top:3px;
+		    text-align:center;
+		}
+		
+		/*#pBG
+		{
+		    position:relative;
+		    height:7px;
+		    width:80%;
+		    margin-top:14px;
+		    margin-left:auto;
+		    margin-right:auto;
+		   
+		    background-color:#6B9EB7;
+		    background-color:#999999;
+		}
+		#pFill
+		{
+		    position:relative;
+		    height:7px;
+		    background-color:#6B9EB7;
+		}*/
+
+/*-------------END TOOL BAR BOTTOM OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+
+
+/*------------- START MAIN CONTENT AREA OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+	
+		#mainContent
+		{
+		    border:0px;
+		    position:relative;
+		    height:100%;
+		    margin:0;
+		    padding:0;
+		    overflow:hidden;
+		    background-color:#111111;
+		    
+		}
+		
+		#myFrame /*---for when content is an html page---*/
+	   {
+		  background-color:#111111;
+		  overflow:hidden;
+	   }
+
+		#altContent
+		{
+		    display:none;
+		}
+		
+		#loadAnimation
+		{
+		    z-index:11;
+		    display:block;
+		    position:absolute;  
+		}
+	
+	/*-----Related to full screen mode----	
+		#topDock
+		{
+		 
+		  z-index:9;
+		  position:absolute;
+		  top:0px;
+		  left:0px;
+		  height:30px;
+		  width:100%;
+		    
+		}
+		
+		#bottomDock
+		{
+		 
+		  z-index:9;
+		  position:absolute;
+		  bottom:0px;
+		  left:0px;
+		  height:30px;
+		  width:100%;
+		  
+		}*/
+		
+		#infoPanel
+		{
+		    position:absolute;
+		    left:0px;
+		    top:0px;
+		    width:240px;
+		    height:100%;
+			background-image:url('../media/IpanelBG.png');
+		}
+		#moduleTitle
+		{
+			
+			line-height:28px;
+			font-size:14px;
+			float:left;
+			margin-left: 15px;
+			color:#faf8ee;
+		}
+		
+		
+		
+		
+/*------------- END MAIN CONTENT AREA OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+
+
+/*------------- START EVALUATION CONTROLS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
+	
+		
+		.choiceContainer
+		{
+			margin-bottom:15px;
+		}
+				
+		.icon
+		{
+			display:none;
+		}
+		
+		.correct
+		{
+			position:relative;
+			float:left;
+			width:15px;
+			height:15px;
+			background-image:url('../media/correctIcon.png');
+			background-repeat:no-repeat;
+		}
+		
+		.incorrect
+		{
+			position:relative;
+			float:left;
+			width:15px;
+			height:15px;
+			background-image:url('../media/incorrectIcon.png');
+			background-repeat:no-repeat;
+		}
+		
+		    
