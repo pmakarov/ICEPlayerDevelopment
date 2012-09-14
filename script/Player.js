@@ -98,7 +98,7 @@ function buildInterface(xml) {
 
 
     // $("#mainContent").load('dummy.htm');
-    $.throbberShow({ image: "media/bar_loader.gif", parent: "#loadAnimation" })
+    $.throbberShow({ image: "media/bar_loader.gif", parent: "#loadAnimation" });
 
 
 
@@ -268,8 +268,37 @@ function handleInfo() {
 		  // accordion.append('<div><h3><a href="#">Third</a></h3><div>Nam dui erat, auctor a, dignissim quis.</div></div>');
 		  // accordion.appendTo(dp);
 
-            $('<div><h3 id="infoHeader" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">Information Panel</h3></div>').appendTo("#infoPanel");
-			$("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo("#infoPanel");
+          //  $('<div><h3 id="infoHeader" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top">Information Panel</h3></div>').appendTo("#infoPanel");
+
+           var infoPanelBar = $('<div id="infoPanelBar">');
+           var closeInfoButton = $('<div id="closeInfo">');
+           var menuBtn = $('<div id="menubtn">');
+           var resourcesBtn = $('<div id="resources">');
+
+           infoPanelBar.appendTo("#infoPanel");
+
+           closeInfoButton.appendTo(infoPanelBar);
+           menuBtn.appendTo(infoPanelBar);
+           resourcesBtn.appendTo(infoPanelBar);
+
+
+           menuBtn.addClass('menu-hover');
+           //menuBtn.removeClass('menu-hover');
+
+			//$("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo("#infoPanel");
+           var infoBody = $('<div id="infoBody">');
+           var menuBody = $('<div id="menuBody">');
+           var resourceBody = $('<div id="resourceBody">');
+           
+           infoBody.appendTo("#infoPanel");
+           menuBody.appendTo(infoBody);
+           resourceBody.appendTo(infoBody);
+
+
+//           function () { $(this).addClass('ui-state-hover'); },
+//           function () { $(this).removeClass('ui-state-hover'); }
+
+           $("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo(menuBody);
             //$('<div id="infoPanelBG"></div>').appendTo("#infoPanel");
 			//$("#infoPanelBG").css('opacity',1)
 
@@ -838,18 +867,23 @@ function loadDefault(item) {
                frameBorder: 0,
                width: "100%",
                height: hP,
-               allowtransparency:"true",
+               allowtransparency: "true",
                src: item
            });
 
            $("#mainContent").html(iframe);
-           $("#loadAnimation").remove();
+           var contentImages = $("#mainContent iframe").load(function ()
+           {
+               //alert("iframe loaded");
+               $("#loadAnimation").remove();
+           });
+
 
            // iframe.bind('click', handlePlayerFocus);
-           iframe.load(function () {
-               var frameBody = iframe.contents().find('html');
-               frameBody.click(handlePlayerFocus);
-           });
+           /* iframe.load(function () {
+           var frameBody = iframe.contents().find('html');
+           frameBody.click(handlePlayerFocus);
+           });*/
 
            break;
 

@@ -126,6 +126,7 @@
 			padding-left:4px;
 			font-size:13px;
 			line-height:28px;
+			color:#C0C0C0;
 		}
 		
 /*-------------START TITLE BAR TOP OF PAGE --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
@@ -472,34 +473,134 @@
 /*------------- START EVALUATION CONTROLS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/		
 	
 		
-		.choiceContainer
+			.choiceContainer
 		{
 			margin-bottom:15px;
+			clear:both;
+			width:930px;
+
 		}
 				
 		.icon
 		{
-			display:none;
+		   position:relative;
+			width:15px;
+			height:15px;
+			vertical-align: middle;
+			float:left;
+			display:block;
+		    
+		    
 		}
 		
 		.correct
 		{
 			position:relative;
-			float:left;
 			width:15px;
 			height:15px;
+			vertical-align: middle;
 			background-image:url('../media/correctIcon.png');
 			background-repeat:no-repeat;
+			float:left;
+
+			
+           
 		}
 		
 		.incorrect
 		{
 			position:relative;
-			float:left;
+			
 			width:15px;
 			height:15px;
+			vertical-align: middle;
 			background-image:url('../media/incorrectIcon.png');
 			background-repeat:no-repeat;
+			float:left;
+
+			
 		}
 		
-		    
+		.msg_body
+		 {
+            white-space: pre; /* for IE 6 and 7*/
+            white-space: pre-wrap; /* or pre-line*/
+		}
+		
+		label 
+		{
+            display:block;
+            padding-left: 40px;
+            text-indent: -20px;
+            position: relative;
+        }
+        .input 
+        {
+            width: 13px;
+            height: 13px;
+            padding: 0;
+            margin:0;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            overflow: hidden;
+        }
+		
+/*-------------------- INFO PANEL -------------------------------------*/
+#infoPanelBar {
+	background-image:url(../media/bggrad.png);
+	height:30px;
+	color:#EDE1AA;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-bottom:2px;
+	}
+
+
+#infoPanelBar div {
+	display:block;
+	margin-top:3px;
+	text-indent: -9999px;
+	height:22px;
+	background-image:url(../media/btnTemplate.png);
+	}
+
+#closeInfo {
+	float:right;
+	background-position: -102px 0px;
+	width:24px;	
+	}
+
+#closeInfo:hover {
+	background-position: -125px 0px;
+	width:24px;
+	
+}
+
+#resources{
+/*	background-position: -293px -22px ; ---Use this for non-hover position -----*/	
+	float:left;
+	background-position: -294px -22px;
+	width:95px;
+	}
+	
+#resources:hover {
+	background-position: -388px -22px;
+	width:95px;
+	}
+#menubtn {
+/*	background-position: -293px -22px ; ---Use this for non-hover position -----*/
+	float:left;	
+	background-position: -294px -48px;
+	width:95px;
+	}
+	
+#menubtn:hover, #menubtn.menu-hover {
+	background-position: -388px -48px;
+	width:95px;
+	}		  
+/*	
+#menubtn.menu-hover
+{
+    background-position: -388px -48px;
+    width:95px;
+}*/

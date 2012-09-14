@@ -64,7 +64,7 @@
                          //alert(userSelection.is('[value=v1]'));
                          userSelection.is('[value=v1]') ? h.text("Correct!") : h.text("Incorrect!");
                         
-                         //alert(h.html());
+                         //alert(h.html());s
                          var para = $('<p>');
                          para.text(evalObject.feedback[j].text);
                          feedback.html("");

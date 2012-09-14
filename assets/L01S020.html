@@ -11,15 +11,15 @@
 
 <div id="contentWindow">
 <div id="titlecontent">
-<h1>Introduction:</h1>
+<h1>What’s the Problem?</h1>
 </div>
 
 	<div id="contentcontainer">   	
-
+			<p>Select the Play button to start the video.</p>
  <!--       <p>This is a text area...love it baby.</p>-->
         <div id="videoBlock">
                    <div id="altContent">
-            <h1>Amtrak Demo</h1>
+            <h1>What's The Problem? (Video)</h1>
 		    <p>Alternative content</p>
 		    <p><a href="http://www.adobe.com/go/getflashplayer">
 			    <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a>
@@ -45,19 +45,18 @@
         var flashvars =
 			{
 			    src: "assets/media/video/scene_1.f4v",
-			    data: "../data/xml/caption_video.xml",
 			    width: "720",
 			    height: "435",
 			    autorun: "false",
-			    showcaptions: "false"
-
+			    showcaptions: "false",
+				closedCaptions:"../data/xml/caption_video.xml"
 			};
 
 
          var params = {
             menu: "false",
             scale: "exactfit",
-            allowFullscreen: "false",
+            allowFullscreen: "true",
             allowScriptAccess: "always",
             wmode: "window",
             bgcolor: "#000000",
