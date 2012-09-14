@@ -298,6 +298,31 @@ function handleInfo() {
 //           function () { $(this).addClass('ui-state-hover'); },
 //           function () { $(this).removeClass('ui-state-hover'); }
 
+           closeInfoButton.click(function (e)
+           {
+               $("#infoPanel").toggle()
+           });
+
+           menuBtn.click(function (e)
+           {
+
+               menuBtn.addClass('menu-hover');
+               resourcesBtn.removeClass('resource-hover');
+               menubody.css('display','block');
+               resourceBody.css('display','none');
+               //alert($(this).css());
+               //$('.clicked').removeAttribute('style');
+           });
+           resourcesBtn.click(function (e)
+           {
+               resourcesBtn.addClass('resource-hover');
+               menuBtn.removeClass('menu-hover');
+               resourceBody.css('display', 'block');
+               menubody.css('display', 'none');
+               //alert($(this).css());
+               //$('.clicked').removeAttribute('style');
+           });
+
            $("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo(menuBody);
             //$('<div id="infoPanelBG"></div>').appendTo("#infoPanel");
 			//$("#infoPanelBG").css('opacity',1)

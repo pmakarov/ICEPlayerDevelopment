@@ -583,7 +583,7 @@
 	width:95px;
 	}
 	
-#resources:hover {
+#resources:hover, #resources.resource-hover{
 	background-position: -388px -22px;
 	width:95px;
 	}
