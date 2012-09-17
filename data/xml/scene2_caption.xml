@@ -10,12 +10,12 @@
   </head>
   <body>
    <div xml:lang="en">    
-	<p begin="00:00:02.50" dur="00:00:02.00">Tracy: Hi.</p>
-	<p begin="00:00:03.75" dur="00:00:03.50">Nancy: Oh hi, Tracy. Have a seat.</p>
-	<p begin="00:00:05.50" dur="00:00:05.00">Tracy: Thank you. So, is this a good time, are you ready?</p>
-	<p begin="00:00:09.00" dur="00:00:03.00">Nancy: Yes, I think so...</p>
-	<p begin="00:00:10.50" dur="00:00:05.00">Tracy: Great, so catch me up, how is this suppose to work?</p>
-	<p begin="00:00:13.75" dur="00:00:05.50">Nancy: Well, they have outlined 14 steps in the hiring process...</p>
+	<p begin="00:00:02.50" dur="00:00:03.00">Tracy: Hi.</p>
+	<p begin="00:00:03.75" dur="00:00:04.00">Nancy: Oh hi, Tracy. Have a seat.</p>
+	<p begin="00:00:05.50" dur="00:00:06.00">Tracy: Thank you. So, is this a good time, are you ready?</p>
+	<p begin="00:00:09.00" dur="00:00:03.50">Nancy: Yes, I think so...</p>
+	<p begin="00:00:10.50" dur="00:00:06.00">Tracy: Great, so catch me up, how is this suppose to work?</p>
+	<p begin="00:00:13.75" dur="00:00:06.00">Nancy: Well, they have outlined 14 steps in the hiring process...</p>
   </div>
   </body>
 </tt> 

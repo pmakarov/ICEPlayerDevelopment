@@ -8,10 +8,12 @@ var menuMarkUp = "";
 var _nodes = new Array();
 var prevFolder;
 
+
 function Player(xml)
 {
     //load some script dynamically
     $.getScript("script/MultipleChoiceSingleSelect.js");
+    $.getScript("script/Modal.js");
 
     //load a style sheet dynamically
     if (document.createStyleSheet) 
@@ -46,6 +48,8 @@ function buildInterface(xml) {
 //    $("#mainContent object").bind("click", handlePlayerFocus);
 //    $("#mainContent myFrame").bind("click", handlePlayerFocus);
 
+
+  
     var dialog = $('<div id="dialog"></div>');
     dialog.appendTo("#mainContent");
     dialog.dialog({
@@ -54,9 +58,9 @@ function buildInterface(xml) {
         overlay: { opacity: 0.7, background: "#FFCC00" }
     });
 
-   
-
-
+   // var fancyBox = $('<div id="fancyBox"></div');
+   // fancyBox.appendTo("#mainContent");
+  
     var helpMsg = "ICE Media Player v. 1.0<br/> September 2012 <br/><br/>To report a technical problem, please contact Kirby Crider at Windwalker Corporation by e-mail at kirby.crider@windwalker.com.";
     helpMsg += "<br/><br/>We appreciate your feedback!";
     $('<p>').html(helpMsg).appendTo("#dialog");
@@ -106,6 +110,7 @@ function buildInterface(xml) {
 
 }
 
+
 function buildTitleBar() {
     var tB = $('<div id="titleBar" class="ICESystemBar" ></div>');
 
@@ -116,6 +121,27 @@ function buildTitleBar() {
     var cB = $('<div id="closeButton" title="Link to Close Player" tabindex="2" class="systemClose" title="close"></div>');
     var hB = $('<div id="helpMenuButton"  title="Link to Help Menu" tabindex="1" class="systemHelp" title="help"></div>');
 
+    var helpMarkup = '<ul id="help"><li><a href="#">Item 1</a></li><li><a href="#">Item 2</a></li><li><a href="#">Item 3</a></li></ul>';
+    //hB.html(helpMarkup);
+    //<a class="fancybox fancybox.iframe" href="iframe.html">Iframe</a>
+
+    var clearDiv = $('<div class="clear">');
+   // clearDiv.appendTo(hB);
+
+  /*  hB.hover(
+        function ()
+        {
+            $(this).find('ul').css('display', 'block');
+            //show its submenu
+            $('ul', this).stop().slideDown(100);
+
+        },
+        function ()
+        {
+            //hide its submenu
+            $('ul', this).stop().slideUp(100);
+        }
+    );*/
 
     hB.keypress(function (e)
     {
@@ -126,9 +152,19 @@ function buildTitleBar() {
         handleKeyboardInputOnItem(e);
     });
 
-  
-    
-    hB.click(handleHelpClick);
+
+
+    hB.click(handleHelpClick2);
+
+   /* hB.click(function (e)
+    {
+        $.fancybox.open({
+            href: 'assets/iframe.html',
+            type: 'iframe',
+            padding: 5
+        });
+    });
+    */
     cB.click(handlePlayerTerminate);
 
     cB.appendTo(sT);
@@ -137,6 +173,78 @@ function buildTitleBar() {
 
    
     return tB;
+}
+
+function handleHelpClick2()
+{
+    $.get('assets/iframe.html', function (data)
+    {
+       
+        modal.open({ content: data });
+        //alert(data);
+    });
+   
+    
+}
+function buildToolBar()
+{
+    var toolB = $('<div id="toolBar" class="ICEToolBar"></div>');
+
+    var iB = $('<div id="infoButton" title="Toggle Information Panel" tabindex="3" class="toolInfo" title="info"></div>');
+    //var fB = $('<div id="fullScreenButton" class="ui-state-default ui-corner-all" title="full screen"></div>');
+
+    iB.appendTo(toolB);
+
+    var mnc = $('<div id="middleNavigationConsole" ></div>');
+
+    //class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"
+    var prev = $('<div id="previousButton" title="Go To Previous Slide" tabindex="4" class="toolPrevious" title="previous"></div>');
+    var progressContainer = $('<div id="progressContainer"></div>');
+
+    var progressText = $('<div id="pText"></div>');
+    progressText.appendTo(progressContainer);
+
+    //var progressBar = $('<div id="pBG"></div>');
+    //	progressBar.appendTo(progressContainer);
+    //
+    //	var progressFill = $('<div id="pFill"></div>');
+    //	progressFill.appendTo(progressBar);
+
+    var next = $('<div id="nextButton" title="Go To Next Slide" tabindex="5" class="toolNext" title="next"></div>');
+
+    next.appendTo(mnc);
+    progressContainer.appendTo(mnc);
+    prev.appendTo(mnc);
+    mnc.appendTo(toolB);
+    //fB.appendTo(toolB);
+
+    //Assign Key Event handlers for keyboard and tab/accessibility navigation:
+    iB.keypress(function (e)
+    {
+        handleKeyboardInputOnItem(e);
+    });
+    next.keypress(function (e)
+    {
+        handleKeyboardInputOnItem(e);
+    });
+    prev.keypress(function (e)
+    {
+        handleKeyboardInputOnItem(e);
+    });
+
+    iB.click(handleInfo);
+    next.click(playNextScene);
+    prev.click(playPrevScene);
+    //fB.click(handleFullScreen);
+
+
+
+    //var topBarHeight = $("#titleBar").height();
+    var diff = $(window).width() / 2 - 360 / 2;
+    //alert(diff);
+    // mnc.css({"left":0});
+
+    return toolB;
 }
 function handleKeyboardInputOnItem(e)
 {
@@ -169,7 +277,7 @@ function handleKeyboardInputOnItem(e)
             }
             break;
 
-        case "prevButton":
+        case "previousButton":
             if (e.keyCode == 13) {
                 playPrevScene();
             }
@@ -186,66 +294,7 @@ function handleHelpClick()
     // prevent the default action, e.g., following a link
     return false;
 }
-function buildToolBar() 
-{
-    var toolB = $('<div id="toolBar" class="ICEToolBar"></div>');
-   
-    var iB = $('<div id="infoButton" title="Toggle Information Panel" tabindex="3" class="toolInfo" title="info"></div>');
-    //var fB = $('<div id="fullScreenButton" class="ui-state-default ui-corner-all" title="full screen"></div>');
-	
-	 iB.appendTo(toolB);
 
-	 var mnc = $('<div id="middleNavigationConsole" ></div>');
-	
-	//class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"
-	var prev = $('<div id="previousButton" title="Go To Previous Slide" tabindex="4" class="toolPrevious" title="previous"></div>');
-	var progressContainer = $('<div id="progressContainer"></div>');
-
-	var progressText = $('<div id="pText"></div>');
-	progressText.appendTo(progressContainer);
-
-	//var progressBar = $('<div id="pBG"></div>');
-//	progressBar.appendTo(progressContainer);
-//
-//	var progressFill = $('<div id="pFill"></div>');
-//	progressFill.appendTo(progressBar);
-
-	var next = $('<div id="nextButton" title="Go To Next Slide" tabindex="5" class="toolNext" title="next"></div>');
-	
-	next.appendTo(mnc);
-	progressContainer.appendTo(mnc);
-	prev.appendTo(mnc);
-    mnc.appendTo(toolB);
-  //fB.appendTo(toolB);
-
-	//Assign Key Event handlers for keyboard and tab/accessibility navigation:
-    iB.keypress(function (e)
-    {
-        handleKeyboardInputOnItem(e);
-    });
-    next.keypress(function (e)
-    {
-        handleKeyboardInputOnItem(e);
-    }); 
-    prev.keypress(function (e)
-	{
-	    handleKeyboardInputOnItem(e);
-	});
-
-    iB.click(handleInfo);
-	next.click(playNextScene);
-	prev.click(playPrevScene);
-   //fB.click(handleFullScreen);
-
-
-   
-    //var topBarHeight = $("#titleBar").height();
-    var diff = $(window).width()/2 - 360/2;
-    //alert(diff);
-   // mnc.css({"left":0});
-
-    return toolB;
-}
 function handleInfo() {
 
         if ($("#infoPanel").length > 0) 
@@ -293,7 +342,7 @@ function handleInfo() {
            infoBody.appendTo("#infoPanel");
            menuBody.appendTo(infoBody);
            resourceBody.appendTo(infoBody);
-
+           var menuContent = $("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo(menuBody);
 
 //           function () { $(this).addClass('ui-state-hover'); },
 //           function () { $(this).removeClass('ui-state-hover'); }
@@ -308,7 +357,7 @@ function handleInfo() {
 
                menuBtn.addClass('menu-hover');
                resourcesBtn.removeClass('resource-hover');
-               menubody.css('display','block');
+               menuContent.css('display', 'block');
                resourceBody.css('display','none');
                //alert($(this).css());
                //$('.clicked').removeAttribute('style');
@@ -318,12 +367,12 @@ function handleInfo() {
                resourcesBtn.addClass('resource-hover');
                menuBtn.removeClass('menu-hover');
                resourceBody.css('display', 'block');
-               menubody.css('display', 'none');
+               menuContent.css('display', 'none');
                //alert($(this).css());
                //$('.clicked').removeAttribute('style');
            });
 
-           $("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo(menuBody);
+         
             //$('<div id="infoPanelBG"></div>').appendTo("#infoPanel");
 			//$("#infoPanelBG").css('opacity',1)
 
