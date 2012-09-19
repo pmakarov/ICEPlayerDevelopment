@@ -587,6 +587,15 @@
 	background-position: -388px -22px;
 	width:95px;
 	}
+	
+ul, ol 
+{
+     margin-left:1.5em; 
+     padding-left:0px; 
+     font-size:14px;
+     list-style:none; 
+}
+li { margin-bottom:0.5em; }
 #menubtn {
 /*	background-position: -293px -22px ; ---Use this for non-hover position -----*/
 	float:left;	
@@ -634,6 +643,12 @@
     #help li a:hover {
         color:#fff;
     }
+    
+    #helpFrame /*---for when content is an html page---*/
+	   {
+		  background-color:#FFFFFF;
+		  overflow:hidden;
+	   }
      
     /* you can make a different style for default selected value */
     #help a.selected {
@@ -690,31 +705,34 @@
 				width:100%;
 				height:100%;
 				background:#000;
+				z-index:1900;
 				opacity:0.5;
 				filter:alpha(opacity=50);
 			}
 
 			#modal {
 				position:absolute;
-				background:url(tint20.png) 0 0 repeat;
+				/*background:url(../media/tint20.png) 0 0 repeat;*/
 				background:rgba(0,0,0,0.2);
-				border-radius:14px;
-				padding:8px;
+				/*border-radius:14px;*/
+				/*padding:8px;*/
 			}
 
 			#content {
-				border-radius:8px;
+				/*border-radius:8px;*/
 				background:#fff;
-				padding:20px;
+				/*padding:20px;*/
 			}
 
 			#close {
 				position:absolute;
-				background:url(close.png) 0 0 no-repeat;
+				background:url(../media/close.png) 0 0 no-repeat;
 				width:24px;
 				height:27px;
 				display:block;
 				text-indent:-9999px;
-				top:-7px;
-				right:-7px;
+				/*top:-7px;
+				right:-7px;*/
+				top:0px;
+				right:0px;
 			}

@@ -6,6 +6,7 @@ var _title = "";
 var _branding = "";
 var menuMarkUp = "";
 var _nodes = new Array();
+var _resources = new Array();
 var prevFolder;
 
 
@@ -128,7 +129,7 @@ function buildTitleBar() {
     var clearDiv = $('<div class="clear">');
    // clearDiv.appendTo(hB);
 
-  /*  hB.hover(
+    /* hB.hover(
         function ()
         {
             $(this).find('ul').css('display', 'block');
@@ -177,14 +178,34 @@ function buildTitleBar() {
 
 function handleHelpClick2()
 {
-    $.get('assets/iframe.html', function (data)
+    var width = $(window).width();
+
+    var iframe = $('<iframe />', {
+        name: 'helpFrame',
+        id: 'helpFrame',
+        frameBorder: 0,
+        width: "100%",
+        height: hP,
+        allowtransparency: "false",
+        src: "assets/iframe.html"
+    });
+
+    modal.open({ content: iframe });
+    $('#mainContent').hide();
+
+  /*$.get('assets/iframe.html', function (data)
     {
        
         modal.open({ content: data });
         //alert(data);
     });
-   
-    
+  */
+
+    $(modal).on("modalClose", function (e)
+    {
+        $('#mainContent').show();
+    });
+    $('#helpFrame').focus();
 }
 function buildToolBar()
 {
@@ -338,11 +359,29 @@ function handleInfo() {
            var infoBody = $('<div id="infoBody">');
            var menuBody = $('<div id="menuBody">');
            var resourceBody = $('<div id="resourceBody">');
-           
            infoBody.appendTo("#infoPanel");
            menuBody.appendTo(infoBody);
            resourceBody.appendTo(infoBody);
            var menuContent = $("<div style='position:relative, z-index:5'><ul id='navigation'>" + menuMarkUp + "</ul></div>").appendTo(menuBody);
+           var resourceContent = $('<div id="resourceContent">');
+
+           var ul = $('<ul id="resource">');
+
+           var resourceHTMLString = "<ul id='resource'>";
+           if (_resources.length > 0) 
+           {
+               for (var i = 0; i < _resources.length; i++) {
+                 
+                 resourceHTMLString += "<li id=\"resource\"><a id=\"resource\" href=\"javascript:void(0)\;\" onclick=\"openpopupwin('"+ _resources[i].src+"')\">" + _resources[i].title + '</a>';
+
+               }
+
+                resourceHTMLString += "<ul>";
+               //alert(resourceHTMLString);
+                resourceBody.html(resourceHTMLString);
+               ul.appendTo(resourceBody);
+               resourceBody.hide();
+           }
 
 //           function () { $(this).addClass('ui-state-hover'); },
 //           function () { $(this).removeClass('ui-state-hover'); }
@@ -371,6 +410,14 @@ function handleInfo() {
                //alert($(this).css());
                //$('.clicked').removeAttribute('style');
            });
+
+
+
+           /*
+           
+           */
+
+
 
          
             //$('<div id="infoPanelBG"></div>').appendTo("#infoPanel");
@@ -411,7 +458,15 @@ function handleInfo() {
             }
         }
 }
-
+function openpopupwin(url)
+{
+    //alert(url);
+   // window.open(url, 'popupwindow').focus();
+    var w = window.open(url, "popupwindow",
+       'width=500,height=500,toolbar=yes, location=yes, status=yes,menubar=no,scrollbars=yes,resizable=yes');
+    return (!w);
+    //return false;
+}
 function navigateToNode(num)
 {
 	var str = "";
@@ -520,6 +575,14 @@ function parseXML(xml) {
     _branding = $(xml).find('system > branding').text();
     _title = $(xml).find('module > title:first').text();
 
+    $(xml).find('resource').each(function ()
+    {
+        var resourceObject = new Object();
+        resourceObject.title = $(this).text();
+        resourceObject.src = $(this).attr('src');
+        _resources.push(resourceObject);
+        //alert(resourceObject.title + "\n" + resourceObject.src);
+    });
 		
     $(xml).find('node').each(function () {
 

@@ -12,8 +12,10 @@
     {
         var top, left;
 
-        top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
+       // top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
         left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
+        top = 30;
+
 
         $modal.css({
             top: top + $(window).scrollTop(),
@@ -27,7 +29,8 @@
         $content.empty().append(settings.content);
 
         $modal.css({
-            width: settings.width || 'auto',
+           // width: settings.width || 'auto',
+            width: "100%",
             height: settings.height || 'auto'
         });
 
@@ -44,13 +47,14 @@
         $overlay.hide();
         $content.empty();
         $(window).unbind('resize.modal');
+        $(this).trigger('modalClose');
     };
 
     // Generate the HTML and add it to the document
     $overlay = $('<div id="overlay"></div>');
     $modal = $('<div id="modal"></div>');
     $content = $('<div id="content"></div>');
-    $close = $('<a id="close" href="#">close</a>');
+    $close = $('<a id="close" href="#" alt="Close Help Window" tabindex="1">close</a>');
 
     $modal.hide();
     $overlay.hide();
@@ -59,12 +63,14 @@
     $(document).ready(function ()
     {
         $('body').append($overlay, $modal);
+        
     });
 
     $close.click(function (e)
     {
         e.preventDefault();
         method.close();
+      
     });
 
     return method;

@@ -2,48 +2,34 @@
 <ICEObject>
     <system>
         <playerMode>presentation</playerMode>
-        <contentMode>flas</contentMode>
-        <theme>ice</theme>
+        <contentMode>HTML</contentMode>
+        <theme>custom</theme>
         <branding>DOI_Seal_55x54.png</branding>
-        <UIWidgets>
-            <search/>
-            <inspectorPanel align="left">
+        <UI>
+            <search>false</search>
+            <informationPanel align="left">
                 <navigation/>
-                <resources/>
-                <acronyms/>
-            </inspectorPanel>
-            <toolBar dockable="true">
+                <resources>                   
+                    <resource src="http://www.opm.gov/investigate/resources/position/index.aspx">OPM Position Designation System</resource>
+                    <resource src=" http://apps.opm.gov/ADT/ADTClientMain.aspx?JScript=1">OPM Assessment Decision Tool</resource>
+                    <resource src="http://apps.opm.gov/ADT/ContentFiles/AssessmentDecisionGuide071807.pdf">OPM Assessment Decision Guide</resource>
+                    <resource src="http://www.opm.gov/hiringtoolkit">  OPM’s Hiring Tool Kit</resource>
+                    <resource src="http://uniformguidelines.com/uniguideprint.html">Uniform Guidelines on Employee Selection Procedures</resource>
+                    <resource src="http://www.opm.gov/hiringtoolkit/docs/Pledge%20to%20Applicants.ppt"> OPM Pledge to Applicants</resource>
+                </resources>
+                <acronyms>false</acronyms>
+            </informationPanel>
+            <toolBar dockable="false">
                 <previousButton/>
                 <nextButton/>
                 <notes/>
                 <progressBar/>
             </toolBar>
-            <dropDownMenu>
-                <menuItem name="Session">
-                    <option name="Save">
-                        <option>BookMark</option>
-                        <option>Notes</option>
-                    </option>
-                    <option name="Notes">
-                        <option name="Print">
-                            <option>Current Page</option>
-                            <option>All Notes</option>
-                        </option>
-                        <option>Notes</option>
-                    </option>
-                </menuItem>
-                <menuItem name="Help">
-                    <option>Support</option>
-                    <option>Help Document</option>
-                    <option>ReadMe</option>
-                </menuItem>
-                <menuItem name="Settings">
-                    <option>Player</option>
-                    <option>Content</option>
-                    <option>Media</option>
-                </menuItem>
-            </dropDownMenu>
-        </UIWidgets>
+            <help>
+                <option>Walkthrough</option>
+                <option>About</option>
+            </help>
+        </UI>
     </system>
     <module id="U1L1">
         <title>Department of the Interior Sample Course</title>
