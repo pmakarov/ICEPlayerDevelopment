@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scene type="simpleScene">
-	<element id="BWV020" type="video">
-			<title>Complex Machine</title>
-			<file src="assets/media/video/BWV020.f4v" />
-	</element>
-</scene>

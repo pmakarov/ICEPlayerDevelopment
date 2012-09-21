@@ -288,7 +288,7 @@ function handleKeyboardInputOnItem(e)
         case "helpMenuButton":
             if (e.keyCode == 13) 
             {
-                handleHelpClick();
+                handleHelpClick2();
             }
             break;
 
@@ -463,7 +463,7 @@ function openpopupwin(url)
     //alert(url);
    // window.open(url, 'popupwindow').focus();
     var w = window.open(url, "popupwindow",
-       'width=500,height=500,toolbar=yes, location=yes, status=yes,menubar=no,scrollbars=yes,resizable=yes');
+       'width=500,height=500,toolbar=no, location=yes, status=yes,menubar=no,scrollbars=yes,resizable=yes');
     return (!w);
     //return false;
 }

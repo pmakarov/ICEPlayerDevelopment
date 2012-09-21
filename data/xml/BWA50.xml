@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scene type="simpleScene">
-	<element id="BWA50" type="video">
-			<title>Low-Risk Guidelines</title>
-			<file src="assets/media/video/BWA50.f4v" />
-	</element>
-</scene>

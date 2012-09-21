@@ -125,5 +125,7 @@ h1{
 	border-color:#333;
 	border-style:solid;
 	margin-top:10px;
-	
+	/*white-space: pre; */ /* for IE 6 and 7*/
+  /*  white-space: pre-wrap; *//* or pre-line*/
+   /* white-space: pre-line;*/
 	}

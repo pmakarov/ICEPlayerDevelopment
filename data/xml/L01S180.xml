@@ -19,7 +19,7 @@ Additionally, the Hiring Manager should gain a working knowledge of the training
 		</remediation>-->
 		<choice-collection>
 			<choice id="c1" valueID="v1">
-				<text><![CDATA[Maintain open communication with the Human Resources Office, peers, and subordinates.]]></text>
+				<text><![CDATA[Maintain open communication with the HR Office, peers, and subordinates.]]></text>
 			</choice>
 			<choice id="c2" valueID="v2">
 				<text><![CDATA[Ensure that other individuals know about the training and recruiting process, without worrying about the details personally.]]></text>	

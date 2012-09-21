@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scene type="simpleScene">
-	<element id="BWV010" type="video">
-			<title>Our Engineered Body</title>
-			<file src="assets/media/video/BWV010.f4v" />
-	</element>
-</scene>

@@ -17,6 +17,35 @@ var urlParams = {};
 
 $(document).ready(function () {
 			
+          $.get("http://games-api.com/stuff", { id : "1" }, function(data) {
+             alert(data);  // "google.com"
+            });
+/* $.ajax( {
+                type:'GET',
+                url:'http://games-api.com/stuff/',
+                data: "{id}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success:function(data) {
+                 alert(data);
+                }
+
+                })*/
+
+/*
+             $.ajax({
+                 type: "POST",
+                 url: "dummyWebsevice.asmx/HelloToYou",
+                 data: "{'name': '" + $('#name').val() + "'}",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function(msg) {
+                     AjaxSucceeded(msg);
+                 },
+                 error: AjaxFailed
+             });
+         });
+         */
 
 //$.getScript('script/Graph.js');
 //$.getScript('script/Node.js');
@@ -30,6 +59,7 @@ $(document).ready(function () {
         xmlHttp.send(null);
         xmlDoc = xmlHttp.responseXML.documentElement;
 	}*/
+   
 
     $.ajax({
         url: "data/" + urlParams["data"],

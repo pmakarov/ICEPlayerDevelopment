@@ -13,8 +13,9 @@
         titleTextDiv.appendTo(load);
         questionTextDiv.appendTo(load);
 
-        var form = $('<form action="javascript:function(){return false;}" method="post"></form>');
-        
+       // var form = $('<form action=\"javascript:function(){return false;}\" method="post"></form>');
+        var form = $('<form action=\"javascript:void(0)\;\" method="post"></form>');
+        // href=\"javascript:void(0)\;\"
         
         var choicesContainer = $('<div id="quizchoices"></div>');
 
@@ -42,8 +43,7 @@
         var submitBtn = $('<input type="submit"/>');
         submitBtn.attr("value", "Submit");
          submitBtn.appendTo(form);
-         submitBtn.click(function ()
-         {
+         submitBtn.click(function (e){
 
              userSelection = $('[name=choices]:checked');
 
@@ -64,8 +64,11 @@
                          //alert(userSelection.is('[value=v1]'));
                          userSelection.is('[value=v1]') ? h.text("Correct!") : h.text("Incorrect!");
                         
-                         //alert(h.html());s
+                         //alert(h.html());
                          var para = $('<p>');
+                         evalObject.feedback[j].text.replace(/^[\r\n\t ]+|[\r\n\t ]+$/g, '')
+                         evalObject.feedback[j].text.replace(/[ \t]+/g, ' ')
+                         evalObject.feedback[j].text.replace(/ ?([\r\n]) ?/g, '$1')
                          para.text(evalObject.feedback[j].text);
                          feedback.html("");
                          h.appendTo(feedback);
@@ -94,25 +97,4 @@
                    $("#loadAnimation").remove();
                }, 500);
           
-}
-function createRadioElement(name, checked)
-{
-    var radioInput;
-    try {
-        var radioHtml = '<input type="radio" name="' + name + '"';
-        if (checked) {
-            radioHtml += ' checked="checked"';
-        }
-        radioHtml += '/>';
-        radioInput = document.createElement(radioHtml);
-    } catch (err) {
-        radioInput = document.createElement('input');
-        radioInput.setAttribute('type', 'radio');
-        radioInput.setAttribute('name', name);
-        if (checked) {
-            radioInput.setAttribute('checked', 'checked');
-        }
-    }
-
-    return radioInput;
 }

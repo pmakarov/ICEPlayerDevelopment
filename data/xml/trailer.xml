@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scene type="simpleScene">
-	<element id="trailer" type="video">
-			<title>Strong Choices Trailer</title>
-			<file src="assets/media/video/trailer.f4v" />
-	</element>
-</scene>
