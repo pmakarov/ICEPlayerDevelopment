@@ -17,35 +17,7 @@ var urlParams = {};
 
 $(document).ready(function () {
 			
-          $.get("http://games-api.com/stuff", { id : "1" }, function(data) {
-             alert(data);  // "google.com"
-            });
-/* $.ajax( {
-                type:'GET',
-                url:'http://games-api.com/stuff/',
-                data: "{id}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success:function(data) {
-                 alert(data);
-                }
-
-                })*/
-
-/*
-             $.ajax({
-                 type: "POST",
-                 url: "dummyWebsevice.asmx/HelloToYou",
-                 data: "{'name': '" + $('#name').val() + "'}",
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 success: function(msg) {
-                     AjaxSucceeded(msg);
-                 },
-                 error: AjaxFailed
-             });
-         });
-         */
+         
 
 //$.getScript('script/Graph.js');
 //$.getScript('script/Node.js');
@@ -118,10 +90,7 @@ function main(xml)
   
 }
 
-function handlePlayerTerminate()
-{
-    window.close();
-}
+
 
 function doQuery() {
    
@@ -180,3 +149,16 @@ function pageInit() {
              return document[movieName];
          }
      }
+
+//Ensure we handle window closing properly
+var unloaded = false;
+function unloadHandler()
+{
+    if (!unloaded) {
+        ICE.SCORM.save(); //save all data that has already been sent
+        ICE.SCORM.quit(); //close the SCORM API connection properly
+        unloaded = true;
+    }
+ }
+ window.onbeforeunload = unloadHandler;
+ window.onunload = unloadHandler;

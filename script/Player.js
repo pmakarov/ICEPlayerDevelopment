@@ -8,7 +8,13 @@ var menuMarkUp = "";
 var _nodes = new Array();
 var _resources = new Array();
 var prevFolder;
-
+var _scorm;
+var _hasHost = false;
+var lmsConnected = false;
+var lessonStatus = "";
+var success = false;
+var connectionActive = false;
+var userDataArray = [];
 
 function Player(xml)
 {
@@ -28,10 +34,174 @@ function Player(xml)
     this.name = xml.name;
     parseXML(xml);
     buildInterface(xml);
-	//assignKeyListeners();
+    //assignKeyListeners();
+    if (_hasHost && _scorm !== "") {
+        bindToSCORMHost();
+    }
 	handleCourse(_nodes[0]);
 
 }
+function scormConnect()
+{
+    var result = false;
+    if (!connectionActive) {
+
+        var eiCall = ICE.SCORM.init();
+        result = (eiCall == true) ? true : false;
+
+        if (result) {
+            connectionActive = true;
+        } else {
+            alert("scorm init failed");
+
+        }
+    } else {
+        alert("ICE.SCORM.init aborted: connection already active.");
+    }
+
+    alert("__connectionActive: " + connectionActive);
+
+    return result;
+}
+function bindToSCORMHost()
+{
+           
+            lmsConnected = ICE.SCORM.init();
+			
+			//Ensure connection was successful before continuing.
+			if (lmsConnected)
+			{
+
+				//Get course status
+				lessonStatus = ICE.SCORM.get("cmi.core.lesson_status");
+
+				//If course has already been completed, kill connection
+				//to LMS because there's nothing to report.
+				if (lessonStatus == "completed" || lessonStatus == "passed")
+				{
+
+					ICE.SCORM.disconnect();
+
+				} else 
+				{
+
+					//If course has NOT been completed yet, let's
+					//ensure the LMS knows the course is incomplete
+					//by explicitly setting status to "incomplete"
+					success = ICE.SCORM.set("cmi.core.lesson_status", "incomplete");
+
+					//Perform a save whenever sending vital data to LMS
+					//but be careful not to do it too often or risk bogging down the LMS
+					ICE.SCORM.save();
+
+					//Extract our custom course progress data from suspend_data, if available.
+					var suspend_data = ICE.SCORM.get("cmi.suspend_data");
+					//suspend_data = "1,1,1,1,1,1,1,1,1,1";
+					//Is suspend_data empty? Check the length of the returned string.
+					//If there's nothing saved, the LMS will return an empty string ""
+					if (suspend_data.length > 0)
+					{
+
+						//suspend_data is not empty, so we must have
+						//saved something in the last course attempt.
+						//Remember, we saved a our progress variables in
+						//a comma-delimited string; we can convert to an
+						//array using string.split(",").
+						userDataArray = suspend_data.split(",");
+
+						
+
+					}
+					else {
+						//alert("user data does not exist");
+						for (var i = 0; i < _nodes.length; i++) {
+						    userDataArray.push(0);
+						}
+					}
+
+				}
+
+			} 
+			else 
+			{
+
+				//Ruh-roh...
+				alert("Could not connect to LMS.");
+				//userDataArray = [ "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+				for (var i = 0; i < _nodes.length; i++) {
+				    userDataArray.push("0");
+				}
+			}
+
+}
+    /*
+			setCourseToComplete
+
+			Accepts: None
+			Returns: None
+
+			When the course is completed, we need to perform several tasks:
+			  1. Send completion notice to LMS
+			  2. Save progress
+			  3. Disconnect from LMS (in some courses this may cause the course window to close)
+		*/
+		 function setCourseToComplete() 
+		{
+
+			//Temp SCO Rule:
+			//ICE.SCORM.set("cmi.core.score.raw" , "100");
+			
+			//Set lesson status to completed
+		    success = ICE.SCORM.set("cmi.completion_status", "completed");
+
+			//Ensure the LMS persists (saves) what was just sent
+			ICE.SCORM.save();
+
+			//Disconnect from LMS
+		    ICE.SCORM.quit();
+
+		}
+        /*
+			saveCourseStatus
+
+			Accepts: None
+			Returns: None
+
+			SCORM doesn't provide a clearly-defined place to save progress data. For example, if
+			you have a 10-page course, and want to keep track of which pages have been viewed, there's
+			no pre-existing SCORM field for pageviews. So we improvise: cmi.suspend_data is a blank
+			field we can use to hold whatever data we like. We just have to follow a few rules:
+
+			 1. It has to be a single string (much like a JavaScript browser cookie)
+			 2. It can only go up to about 4000 characters in SCORM 1.2 or 64,000 characters in SCORM 2004
+			 3. It won't be permanently stored in the LMS until we commit (use ICE' "save" command)
+
+		*/
+function saveCourseStatus(arr)
+{
+
+			//Create a string to store in suspend_data. In this case, we're using a comma-delimited string
+			//because it can easily be extracted via string.split() later on. There are a gazillion ways to
+			//do this, including JSON, but this is just a simple, somewhat contrived example.
+			//trace("saving this scorm data: " + arr);
+			
+			
+			
+			var suspend_str = "";
+
+			for (var i = 0; i < arr.length; i++)
+			{
+				suspend_str += arr[i] + ",";
+			}
+			
+			//trace("inside saveCourseStatusSCORM " + suspend_str);
+			//Send suspend_data string to LMS
+			ICE.SCORM.set("cmi.suspend_data", suspend_str);
+
+			ICE.SCORM.save();
+			
+		}
+
 
 function buildInterface(xml) {
 
@@ -573,7 +743,11 @@ function handleFullScreen() {
 function parseXML(xml) {
 
     _branding = $(xml).find('system > branding').text();
+    _hasHost = $(xml).find('system > host').text();
+    _hasHost = (_hasHost ) ? true : false;
+    _scorm = $(xml).find('system > hostAPI').text();
     _title = $(xml).find('module > title:first').text();
+   
 
     $(xml).find('resource').each(function ()
     {
@@ -755,8 +929,11 @@ function updateInterface() {
 }
 
 function handleCourse(s) {
-	
     updateInterface();
+    userDataArray[stepNumber] = 1;
+    if (ICE.SCORM.connection.isActive) {
+        saveCourseStatus(userDataArray);
+    }
 
     var loadAnim = $('<div id="loadAnimation"></div>');
     loadAnim.appendTo("#player");
@@ -1042,4 +1219,23 @@ function handlePlayerFocus () {
 */
 
     return false;
+}
+function handlePlayerTerminate()
+{
+    var complete = false;
+    var cnt = 0;
+    if (ICE.SCORM.connection.isActive) {
+
+        for (var i = 0; i < userDataArray.length; i++) {
+            if (userDataArray[i] == 1) {
+                cnt++;
+            }
+        }
+
+        if (cnt == userDataArray.length) {
+            setCourseToComplete();
+        }
+    }
+
+    window.close();
 }

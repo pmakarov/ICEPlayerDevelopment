@@ -3,6 +3,8 @@
     <system>
         <playerMode>presentation</playerMode>
         <contentMode>HTML</contentMode>
+        <host>true</host>
+        <hostAPI>SCORM 2004</hostAPI>
         <theme>custom</theme>
         <branding>DOI_Seal_55x54.png</branding>
         <UI>
