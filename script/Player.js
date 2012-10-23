@@ -20,6 +20,7 @@ function Player(xml)
 {
     //load some script dynamically
     $.getScript("script/MultipleChoiceSingleSelect.js");
+    $.getScript("script/FillInTheBlank.js");
     $.getScript("script/Modal.js");
 
     //load a style sheet dynamically
@@ -38,6 +39,7 @@ function Player(xml)
     if (_hasHost && _scorm !== "") {
         bindToSCORMHost();
     }
+   // else if(_hasHost
 	handleCourse(_nodes[0]);
 
 }
@@ -1034,6 +1036,11 @@ function handleICEEvaluation(str)
             switch (evalObject.evalType) {
                 case "multipleChoiceSingleSelect":
                     buildMultipleChoiceSingleSelect(evalObject);
+                    break;
+
+                case "ReflectionQuestion":
+                case "FillInTheBlank":
+                    buildFillInTheBlank(evalObject);
                     break;
 
                 default:

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="ReflectionQuestion" templateType="ReflectionQuestion">
+  <questionText><![CDATA[What other advice have you heard for preventing trouble with drugs and alcohol from others?]]></questionText>
+  <feedback>
+    <feedbackText valueID="v1"><![CDATA[Thank you for answering, press "Next" to move on.]]></feedbackText>
+    <feedbackText valueID="v2"><![CDATA[Incorrect!  Custom feedback goes here!]]></feedbackText>
+  </feedback>
+  <titleText><![CDATA[Reflection Question]]></titleText>
+  <remediation>
+    <file href="remFile.htm" windowOptions="height=500,width=300,top=100,left=400"/>
+    <linkText>For more information about this topic click here!</linkText>
+  </remediation>
+  <value-collection>
+    <value id="v1"><![CDATA[true]]></value>
+    <value id="v2"><![CDATA[false]]></value>
+  </value-collection>
+</evaluation>
