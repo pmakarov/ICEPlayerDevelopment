@@ -3,6 +3,7 @@ var stepNumber = 0;
 var sum = 0;
 var _fullscreen = false;
 var _title = "";
+var _contentMode = "";
 var _branding = "";
 var menuMarkUp = "";
 var _nodes = new Array();
@@ -744,6 +745,7 @@ function handleFullScreen() {
 
 function parseXML(xml) {
 
+    _contentMode = $(xml).find('system > contentMode').text();
     _branding = $(xml).find('system > branding').text();
     _hasHost = $(xml).find('system > host').text();
     _hasHost = (_hasHost ) ? true : false;
@@ -893,6 +895,7 @@ function clearDisplayList() {
 
     swfobject.removeSWF("Flash");
     $("#myFrame").remove();
+    
 }
 function updateInterface() {
 
@@ -968,8 +971,7 @@ function handleICEEvaluation(str)
     $.ajax({
         url: str,
         dataType: ($.browser.msie) ? "text" : "xml",
-        success: function (data)
-        {
+        success: function (data) {
             var xml;
             if (typeof data == "string") {
                 xml = new ActiveXObject("Microsoft.XMLDOM");
@@ -982,11 +984,15 @@ function handleICEEvaluation(str)
 
 
             var evalXML = $(xml).find('evaluation');
-            var evalObject = new Object();
-            evalObject.evalType = evalXML.attr('evalType');
-            evalObject.titleText = evalXML.find('titleText').text();
-            evalObject.questionText = evalXML.find('questionText').text();
-            evalObject.instructionText = evalXML.find('instructionText').text();
+            var evalObject = {
+                evalType: evalXML.attr('evalType'),
+                maxAttempts: evalXML.attr('maxAttempts'),
+                custom: evalXML.attr('design') ? "true" : "false",
+                titleText: evalXML.find('titleText').text(),
+                questionText: evalXML.find('questionText').text(),
+                instructionText: evalXML.find('instructionText').text(),
+                multimedia: evalXML.find('multimedia').attr('src')
+            };
 
             if (evalXML.children('remediation').length != 0) {
                 evalObject.remediation = new Object();
@@ -999,8 +1005,7 @@ function handleICEEvaluation(str)
             }
 
             evalObject.feedback = new Array();
-            evalXML.find('feedbackText').each(function ()
-            {
+            evalXML.find('feedbackText').each(function () {
                 var feedbackObject = new Object();
                 feedbackObject.valueID = $(this).attr('valueID');
                 feedbackObject.text = $(this).text();
@@ -1010,8 +1015,7 @@ function handleICEEvaluation(str)
             });
 
             evalObject.choices = new Array();
-            evalXML.find('choice').each(function ()
-            {
+            evalXML.find('choice').each(function () {
                 var choiceObject = new Object();
                 choiceObject.id = $(this).attr('id');
                 choiceObject.valueID = $(this).attr('valueID');
@@ -1022,8 +1026,7 @@ function handleICEEvaluation(str)
             });
 
             evalObject.values = new Array();
-            evalXML.find('value').each(function ()
-            {
+            evalXML.find('value').each(function () {
                 var valueObject = new Object();
                 valueObject.id = $(this).attr('id');
                 valueObject.text = $(this).text();
@@ -1075,11 +1078,60 @@ function handleICEVideo(str) {
 
     });
 }
+function loadFlashVideo(str){
+var flashvars =
+			{
+			    src: "assets/media/" + str,
+			    width: "1024",
+			    height: "708",
+			    autorun: "true",
+                events : "true",
+                "events.onReady" : "onPlayerReady",
+				"events.onComplete" : "onAssetComplete",
+				"events.onNotifyStatus" : "onNotifyPlayerStatus",
+				plugins: "audioDescriptions,closedCaptions,CDN",
+				"audioDescriptions.file" : "data/xml/audioDescription_scene1_5.xml",
+				"closedCaptions.file" : "data/xml/caption_video.xml",
+				"closedCaptions.showCaptions": "false"
+			};
 
-function loadFlashVideo(str) {
+
+         var params = {
+            menu: "false",
+            scale: "exactfit",
+            allowFullscreen: "true",
+            allowScriptAccess: "always",
+            wmode: "window",
+            bgcolor: "#000000",
+            quality: "high",
+            seamlessTabbing: "true"
+        };
+        var attributes = {
+            id: "Flash",
+            name: "Flash"
+        };
+
+        if ($("#mainContent object") || $("#contentWindow")) {
+            $("#mainContent").empty();
+            var load = $('<div id="contentContainer"></div>');
+            load.appendTo("#mainContent");
+        }
+
+        //swfobject.embedSWF("ICEMediaPlayer.swf", "altContent", "720", "435", "10.0.0", "../expressInstall.swf", flashvars, params, attributes);
+        swfobject.embedSWF("ICEMediaPlayer.swf", "contentContainer", "1024", hP, "10.0.0", "expressInstall.swf", flashvars, params, attributes,
+           function () {
+               setTimeout(function () {
+                   $("#loadAnimation").remove();
+               }, 500);
+               // $.throbber.hide();
+           }
+
+            );
+}
+function loadFlashVideoOLD(str) {
     var flashvars =
 			{
-			    src: str,
+			    src: "assets/media/"+str,
 			    /* autoPlay: "false",
 			    verbose: true,
 			    controlBarAutoHide: "false",
@@ -1103,9 +1155,9 @@ function loadFlashVideo(str) {
         name: "Flash",
         swfliveconnect: true
     };
-    if ($("#mainContent object")) {
+    if ($("#mainContent object") || $("#contentWindow")) {
         // $("#mainContent object").remove();
-       
+       $("#mainContent").empty();
         var load = $('<div id="contentContainer"></div>');
         load.appendTo("#mainContent");
     }
@@ -1245,4 +1297,27 @@ function handlePlayerTerminate()
     }
 
     window.close();
+}
+
+// when video ends
+$(document).bind('ASSET_COMPLETE', function () {
+    //alert('The video has completed playing"');
+    //TODO: code conditional: if current node == complete && setComponentDataById true
+    playNextScene();
+});
+
+function onAssetComplete(data) {
+    $(document).trigger(data);
+}
+function onNotifyPlayerStatus(data) {
+    //alert(data);
+    console.log(data);
+}
+
+function setComponentDataById(data,id) {
+
+    return true;
+}
+function getComponentDataById(id) {
+    return true;
 }

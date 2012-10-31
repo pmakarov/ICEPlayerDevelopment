@@ -16,90 +16,82 @@ var urlParams = {};
 
 
 $(document).ready(function () {
-			
-         
 
-//$.getScript('script/Graph.js');
-//$.getScript('script/Node.js');
-//$.getScript('script/Edge.js');
 
-	/*if($.browser.safari == true)
-	{
-		alert("me");
-		xmlHttp = new window.XMLHttpRequest();
-        xmlHttp.open("GET",urlParams["data"],false);
-        xmlHttp.send(null);
-        xmlDoc = xmlHttp.responseXML.documentElement;
-	}*/
-   
+
+    //$.getScript('script/Graph.js');
+    //$.getScript('script/Node.js');
+    //$.getScript('script/Edge.js');
+
+    /*if($.browser.safari == true)
+    {
+    alert("me");
+    xmlHttp = new window.XMLHttpRequest();
+    xmlHttp.open("GET",urlParams["data"],false);
+    xmlHttp.send(null);
+    xmlDoc = xmlHttp.responseXML.documentElement;
+    }*/
+
 
     $.ajax({
         url: "data/" + urlParams["data"],
         dataType: ($.browser.msie) ? "text" : "xml",
-        success: function (data) 
-		{
+        success: function (data) {
             var xml;
-            if (typeof data == "string") 
-			{
+            if (typeof data == "string") {
                 xml = new ActiveXObject("Microsoft.XMLDOM");
                 xml.async = false;
                 xml.loadXML(data);
             }
-            else 
-			{
-				
+            else {
+
                 xml = data;
             }
 
             main(xml);
         },
-		error: AjaxFailed
+        error: AjaxFailed
 
     });
-	
-	
+
+
 
 });
-function getActive()
-{
-  activeObj = document.activeElement;
-  var inFocus = false;
-  if (activeObj.tagName == "INPUT" || activeObj.tagName == "TEXTAREA")
-  {
-     inFocus = true;
-  }
-  alert(activeObject);
+function getActive() {
+    activeObj = document.activeElement;
+    var inFocus = false;
+    if (activeObj.tagName == "INPUT" || activeObj.tagName == "TEXTAREA") {
+        inFocus = true;
+    }
+    alert(activeObject);
 }
-function AjaxFailed(result) 
-{
-      //alert("FAILED : " + result.status + ' ' + result.statusText);
-	  alert("It appears that you are attempting to access this content on your local machine with a browser configuration that does not support the loading of local xml data. Please change your browser's local data priveleges or simply try a different browser (Internet Explorer 7.0 or higher or Firefox  3.6 or higher).");
+function AjaxFailed(result) {
+    //alert("FAILED : " + result.status + ' ' + result.statusText);
+    alert("It appears that you are attempting to access this content on your local machine with a browser configuration that does not support the loading of local xml data. Please change your browser's local data priveleges or simply try a different browser (Internet Explorer 7.0 or higher or Firefox  3.6 or higher).");
 }
 
 
-function main(xml) 
-{
- 
-   if($(xml).find('system > contentMode').text() == "flash")
-   {
+function main(xml) {
+
+    if ($(xml).find('system > contentMode').text() == "flash") {
         doQuery();
-   }
+    }
     else
-    {  var player = new Player(xml); }
-   
-  
+    { var player = new Player(xml); }
+
+
 }
 
 
 
 function doQuery() {
-   
-var flashvars =
+
+    var flashvars =
 			{
-			    data:urlParams["data"],
-                mode:urlParams["mode"]
+			    data: urlParams["data"],
+			    mode: urlParams["mode"]
 			};
-   
+
     var params = {
         menu: "false",
         scale: "exactFit",
@@ -138,27 +130,32 @@ function pageInit() {
     //alert(thisMovie("myPRIME"));
     var globalvar = thisMovie("Flash");
     //!!! Need to timeout for all browsers load order to catchup
-	
+
     setTimeout('thisMovie("Flash").focus()', 250);
     //$('altContent').css({display:"block"});
 }
- function thisMovie(movieName) {
-         if (navigator.appName.indexOf("Microsoft") != -1) {
-             return window[movieName];
-         } else {
-             return document[movieName];
-         }
-     }
+function thisMovie(movieName) {
+    if (navigator.appName.indexOf("Microsoft") != -1) {
+        return window[movieName];
+    } else {
+        return document[movieName];
+    }
+}
 
+function sendToActionScript(value) {
+    thisMovie("Flash").sendToActionScript(value);
+}
+function sendToJavaScript(value) {
+    alert(value);
+}
 //Ensure we handle window closing properly
 var unloaded = false;
-function unloadHandler()
-{
+function unloadHandler() {
     if (!unloaded) {
         ICE.SCORM.save(); //save all data that has already been sent
         ICE.SCORM.quit(); //close the SCORM API connection properly
         unloaded = true;
     }
- }
- window.onbeforeunload = unloadHandler;
- window.onunload = unloadHandler;
+}
+window.onbeforeunload = unloadHandler;
+window.onunload = unloadHandler;

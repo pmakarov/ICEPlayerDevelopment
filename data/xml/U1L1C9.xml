@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="ReflectionQuestion">
+		<questionText><![CDATA[What is it that makes these values worth keeping, in comparison with those that you chose to lose?]]></questionText>
+		<titleText><![CDATA[Reflection Question]]></titleText>
+		<audio src="U1L1C9.mp3"/>
+		<remediation>
+		    <file href="remFile.htm" windowOptions="height=500,width=300,top=100,left=400"/>
+		    <linkText>For more information about this topic click here!</linkText>
+		</remediation>
+		<value-collection>
+			<value id="v1"><![CDATA[true]]></value>
+			<value id="v2"><![CDATA[false]]></value>
+		</value-collection>
+</evaluation>

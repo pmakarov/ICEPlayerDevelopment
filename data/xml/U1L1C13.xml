@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceSingleSelect" design="true">
+	<questionText><![CDATA[One word that describes how it would feel to actually lose these things from my life is: ]]></questionText>
+	<instructionText><![CDATA[Type one word into the textbox, then click Submit.]]></instructionText>
+	<multimedia src="U1L1C13.swf"/>
+	<audio src="U1L1C13.mp3"/>
+	<titleText><![CDATA[My Values]]></titleText>
+	<choice-collection>
+		<choice id="c1" valueID="v1">
+		<text><![CDATA[yes]]></text>
+		<userEntry controlID=""></userEntry>
+	</choice>
+	</choice-collection>
+	<value-collection>
+		<value id="v1"><![CDATA[true]]></value>
+		<value id="v2"><![CDATA[false]]></value>
+	</value-collection>
+</evaluation>
+
+	

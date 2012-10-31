@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lesson id="U1L1">
+	<title>What Do I Value?</title>
+	<step-collection>
+		<step id="U1L1C0" type="evaluation">
+			<title>intro slide</title>
+			<file src="U1L1C0.xml" />
+		</step>
+		<step id="U1L1C1" type="video">
+			<title>video</title>
+			<file src="U1L1C1.xml" />
+		</step>
+		<step id="U1L1C2" type="video">
+			<title>video2</title>
+			<file src="U1L1C2.xml" />
+		</step>
+		<step id="U1L1C5" type="evaluation">
+			<title>Values step one</title>
+			<file src="U1L1C5.xml" />
+		</step>
+		<step id="U1L1C7" type="video">
+			<title>video2</title>
+			<file src="U1L1C7.xml" />
+		</step>
+		<step id="U1L1C8" type="evaluation">
+			<title>Values step 2 and 3</title>
+			<file src="U1L1C8.xml" />
+		</step>
+		<step id="U1L1C9" type="evaluation">
+			<title>Reflection Question</title>
+			<file src="U1L1C9.xml" />
+		</step>
+		<step id="U1L1C10" type="video">
+			<title>video2</title>
+			<file src="U1L1C10.xml" />
+		</step>
+		<step id="U1L1C11" type="evaluation">
+			<title>Values step 2 and 3</title>
+			<file src="U1L1C11.xml" />
+		</step>
+		<step id="U1L1C12" type="video">
+			<title>video2</title>
+			<file src="U1L1C12.xml" />
+		</step>
+		<step id="U1L1C13" type="evaluation">
+			<title>Values step 2 and 3</title>
+			<file src="U1L1C13.xml" />
+		</step>
+		<step id="U1L1C14" type="generic">
+			<title>Values Globe</title>
+			<file src="U1L1C14.xml" />
+		</step>
+		<step id="U1L1C14B" type="evaluation">
+			<title>Share Your Response</title>
+			<file src="U1L1C14B.xml" />
+		</step>
+		<step id="U1L1C15" type="video">
+			<title>video2</title>
+			<file src="U1L1C15.xml" />
+		</step>
+		<step id="U1L1C16" type="evaluation">
+			<title>Notes</title>
+			<file src="U1L1C16.xml" />
+		</step>
+	</step-collection>
+</lesson>

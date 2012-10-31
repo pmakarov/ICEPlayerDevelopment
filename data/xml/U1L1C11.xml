@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceMultipleSelect" design="true">
+		<questionText><![CDATA[]]></questionText>
+		<instructionText><![CDATA[Select three more values you would give up if you had to, then click Submit.]]></instructionText>
+		<multimedia src="U1L1C11.swf"/>
+		<data-dependency id="U1L1C8"/>
+		<audio src="U1L1C11.mp3" />
+		<titleText><![CDATA[My Values]]></titleText>
+		<choice-collection>
+			<choice id="c1" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c2" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c3" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c4" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+		</choice-collection>
+		<value-collection>
+			<value id="v1"><![CDATA[true]]></value>
+			<value id="v2"><![CDATA[false]]></value>
+		</value-collection>
+</evaluation>

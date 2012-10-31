@@ -1,0 +1,25 @@
+<scene type="simpleScene">
+	<element id="U1L1C12" type="video">
+		<title>What Would Most People Say Host Video</title>
+		<!-- <file src="assets/media/default.flv" /> -->
+		<file src="video/738313156001.f4v" />
+		<cuePoints>
+			<cuePoint id="1" time="0.1">
+				<action type="caption">A 2nd cue point for a caption was generated. You can enjoy it now...</action>
+				<action type="save">A Save Command is issued now...</action>
+			</cuePoint>
+			<cuePoint id="2" time="5.44">
+				<action type="caption">A 2nd cue point for a caption was generated. You can enjoy it now...</action>
+				<action type="save">A Save Command is issued now...</action>
+			</cuePoint>
+			<cuePoint id="3" time="13.44">
+				<action type="caption">A 2nd cue point for a caption was generated. You can enjoy it now...</action>
+				<action type="save">A Save Command is issued now...</action>
+			</cuePoint>
+			<cuePoint id="4" time="20.44">
+				<action type="caption">A 2nd cue point for a caption was generated. You can enjoy it now...</action>
+				<action type="save">A Save Command is issued now...</action>
+			</cuePoint>
+		</cuePoints>
+	</element>
+</scene>

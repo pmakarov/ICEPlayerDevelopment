@@ -18,7 +18,7 @@
         // href=\"javascript:void(0)\;\"
 
         var inputText = $('<textarea  id="userAnswer" name="userInput"/>');
-        inputText.css("width", "80%");
+        inputText.css("width", "90%");
         inputText.css("height", "200");
         inputText.appendTo(form);
         var br = $('<br/>');

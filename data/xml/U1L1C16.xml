@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="ReflectionQuestion" templateType="notes">
+	<questionText><![CDATA[Values]]></questionText>
+	<titleText><![CDATA[My Notes]]></titleText>
+	
+	<choice-collection>
+		<choice id="c1" valueID="v1">
+			<text><![CDATA[1]]></text>
+			<userEntry controlID=""></userEntry>
+		</choice>
+	</choice-collection>
+	<value-collection>
+		<value id="v1"><![CDATA[true]]></value>
+		<value id="v2"><![CDATA[false]]></value>
+	</value-collection>
+</evaluation>

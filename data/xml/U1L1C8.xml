@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceMultipleSelect" design="true">
+		<questionText><![CDATA[]]></questionText>
+		<instructionText><![CDATA[Click on three values you would give up.]]></instructionText>
+		<multimedia src="U1L1C8.swf"/>
+		<data-dependency id="U1L1C5"/>
+		<audio src="U1L1C8.mp3"/>
+		<titleText><![CDATA[My Values]]></titleText>
+		<remediation>
+		    <file href="remFile.htm" windowOptions="height=500,width=300,top=100,left=400"/>
+		    <linkText>For more information about this topic click here!</linkText>
+		</remediation>
+		<choice-collection>
+			<choice id="c1" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c2" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c3" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c4" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c5" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c6" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c7" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c8" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c9" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c10" valueID="v1">
+				<text><![CDATA[yes]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+		</choice-collection>
+		<value-collection>
+			<value id="v1"><![CDATA[true]]></value>
+			<value id="v2"><![CDATA[false]]></value>
+		</value-collection>
+</evaluation>

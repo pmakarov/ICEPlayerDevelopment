@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceMultipleSelect" design="true">
+		<questionText><![CDATA[]]></questionText>
+		<instructionText><![CDATA[Put each word on the Top Ten or Less Important list, then click Submit.]]></instructionText>
+		<multimedia src="U1L1C5.swf"/>
+		<audio src="U1L1C5.mp3"/>
+		<titleText><![CDATA[My Values]]></titleText>
+		<choice-collection>
+			<choice id="c1" valueID="v1">
+				<text><![CDATA[Acceptance]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c2" valueID="v1">
+				<text><![CDATA[Achievement]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c3" valueID="v1">
+				<text><![CDATA[Attractiveness]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c4" valueID="v1">
+				<text><![CDATA[Challenge]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c5" valueID="v1">
+				<text><![CDATA[Community]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c6" valueID="v1">
+				<text><![CDATA[Creativity]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c7" valueID="v1">
+				<text><![CDATA[Family]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c8" valueID="v1">
+				<text><![CDATA[Forgiveness]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c9" valueID="v1">
+				<text><![CDATA[Freedom]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c10" valueID="v1">
+				<text><![CDATA[Friendship]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c11" valueID="v1">
+				<text><![CDATA[Fun]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c12" valueID="v1">
+				<text><![CDATA[God's Will]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c13" valueID="v1">
+				<text><![CDATA[Health]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c14" valueID="v1">
+				<text><![CDATA[Honesty]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c15" valueID="v1">
+				<text><![CDATA[Hope]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c16" valueID="v1">
+				<text><![CDATA[Independence]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c17" valueID="v1">
+				<text><![CDATA[Job/Work]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c18" valueID="v1">
+				<text><![CDATA[Learning]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c19" valueID="v1">
+				<text><![CDATA[Love/Being Loved]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c20" valueID="v1">
+				<text><![CDATA[Money]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c21" valueID="v1">
+				<text><![CDATA[Passion]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c22" valueID="v1">
+				<text><![CDATA[Purpose]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c23" valueID="v1">
+				<text><![CDATA[Responsibility]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c24" valueID="v1">
+				<text><![CDATA[Taking Risks]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c25" valueID="v1">
+				<text><![CDATA[Sexuality]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c26" valueID="v1">
+				<text><![CDATA[Self-Control]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c27" valueID="v1">
+				<text><![CDATA[Self-Respect]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c28" valueID="v1">
+				<text><![CDATA[Spirituality]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c29" valueID="v1">
+				<text><![CDATA[Stability]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+			<choice id="c30" valueID="v1">
+				<text><![CDATA[Tradition]]></text>
+				<userEntry controlID=""></userEntry>
+			</choice>
+		</choice-collection>
+		<value-collection>
+			<value id="v1"><![CDATA[true]]></value>
+			<value id="v2"><![CDATA[false]]></value>
+		</value-collection>
+</evaluation>

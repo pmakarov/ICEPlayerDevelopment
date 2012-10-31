@@ -2,7 +2,7 @@
 <ICEObject>
   <system>
     <playerMode>presentation</playerMode>
-    <contentMode>HTML</contentMode>
+    <contentMode>myPRIME_v_1.5</contentMode>
     <host></host>
     <hostAPI>
       <!--SCORM 2004-->
@@ -36,24 +36,67 @@
     </UI>
   </system>
   <module id="U1L1">
-    <title>Eval SDK</title>
+    <title>What Do I Value?</title>
     <node-collection>
-      <node id="100" type="">
-        <title>Evaluation Sample Software Development Kit</title>
-        <node-collection>
-          <node id="1" type="evaluation">
-            <title>Reflection Question</title>
-            <file src="ReflectionQuestion.xml" />
-          </node>
-          <node id="1.5" type="">
-            <title>Course Overview</title>
-            <file src="assets/L01S015.html" />
-          </node>
-          <node id="2" type="">
-            <title>What's the Problem? (Video)</title>
-            <file src="assets/L01S020.html" />
-          </node>
-        </node-collection>
+      <node id="U1L1C0" type="evaluation">
+        <title>intro slide</title>
+        <file src="U1L1C0.xml" />
+      </node>
+      <node id="U1L1C1" type="video">
+        <title>video</title>
+        <file src="U1L1C1.xml" />
+      </node>
+      <node id="U1L1C2" type="video">
+        <title>video2</title>
+        <file src="U1L1C2.xml" />
+      </node>
+      <node id="U1L1C5" type="evaluation">
+        <title>Values node one</title>
+        <file src="U1L1C5.xml" />
+      </node>
+      <node id="U1L1C7" type="video">
+        <title>video2</title>
+        <file src="U1L1C7.xml" />
+      </node>
+      <node id="U1L1C8" type="evaluation">
+        <title>Values node 2 and 3</title>
+        <file src="U1L1C8.xml" />
+      </node>
+      <node id="U1L1C9" type="evaluation">
+        <title>Reflection Question</title>
+        <file src="U1L1C9.xml" />
+      </node>
+      <node id="U1L1C10" type="video">
+        <title>video2</title>
+        <file src="U1L1C10.xml" />
+      </node>
+      <node id="U1L1C11" type="evaluation">
+        <title>Values node 2 and 3</title>
+        <file src="U1L1C11.xml" />
+      </node>
+      <node id="U1L1C12" type="video">
+        <title>video2</title>
+        <file src="U1L1C12.xml" />
+      </node>
+      <node id="U1L1C13" type="evaluation">
+        <title>Values node 2 and 3</title>
+        <file src="U1L1C13.xml" />
+      </node>
+      <node id="U1L1C14" type="generic">
+        <title>Values Globe</title>
+        <file src="U1L1C14.xml" />
+      </node>
+      <node id="U1L1C14B" type="evaluation">
+        <title>Share Your Response</title>
+        <file src="U1L1C14B.xml" />
+      </node>
+      <node id="U1L1C15" type="video">
+        <title>video2</title>
+        <file src="U1L1C15.xml" />
+      </node>
+      <node id="U1L1C16" type="evaluation">
+        <title>Notes</title>
+        <file src="U1L1C16.xml" />
       </node>
     </node-collection>
   </module>

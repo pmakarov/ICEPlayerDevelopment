@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<evaluation evalType="ReflectionQuestion" templateType="ReflectionQuestion">
+<evaluation evalType="ReflectionQuestion" templateType="ReflectionQuestion" maxAttempts="3">
   <questionText><![CDATA[What other advice have you heard for preventing trouble with drugs and alcohol from others?]]></questionText>
   <feedback>
     <feedbackText valueID="v1"><![CDATA[Thank you for answering, press "Next" to move on.]]></feedbackText>

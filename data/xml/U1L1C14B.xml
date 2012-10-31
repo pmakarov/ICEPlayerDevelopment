@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation evalType="multipleChoiceSingleSelect" design="true" >
+	<questionText><![CDATA[Would you like to share your response with others?  ]]></questionText>
+	<instructionText><![CDATA[Choose one of the following repsonses.]]></instructionText>
+	<multimedia src="U1L1C15.swf"/>
+	<audio src="U1L1C14_2.mp3" />
+	<titleText><![CDATA[Share Your Response?]]></titleText>
+	<choice-collection>
+		<choice id="c1" valueID="v1">
+			<text><![CDATA[yes]]></text>
+			<userEntry controlID=""></userEntry>
+		</choice>
+		<choice id="c2" valueID="v2">
+			<text><![CDATA[no]]></text>
+			<userEntry controlID=""></userEntry>
+		</choice>
+	</choice-collection>
+	<value-collection>
+		<value id="v1"><![CDATA[true]]></value>
+		<value id="v2"><![CDATA[false]]></value>
+	</value-collection>
+</evaluation>
