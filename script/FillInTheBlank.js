@@ -13,10 +13,7 @@
         titleTextDiv.appendTo(load);
         questionTextDiv.appendTo(load);
 
-       // var form = $('<form action=\"javascript:function(){return false;}\" method="post"></form>');
         var form = $('<form action=\"javascript:void(0)\;\" method="post"></form>');
-        // href=\"javascript:void(0)\;\"
-
         var inputText = $('<textarea  id="userAnswer" name="userInput"/>');
         inputText.css("width", "90%");
         inputText.css("height", "200");
@@ -26,25 +23,27 @@
         var submitBtn = $('<input type="submit"/>');
         submitBtn.attr("value", "Submit");
          submitBtn.appendTo(form);
-         submitBtn.click(function (e){
+         submitBtn.click(function (e) {
 
              userSelection = $('#userAnswer').val();
 
              var para = $('<p>');
-             if (userSelection==="") {
-                
+             if (userSelection === "") {
+
                  para.text("You must make a selection in order to continue!");
                  feedback.html("");
                  para.appendTo(feedback);
              }
              else {
-               
-                         para.text("Thank you for shopping");
-                         feedback.html("");
-                         para.appendTo(feedback);
 
-                 }
-             
+                 para.text("Thank you for shopping");
+                 feedback.html("");
+                 para.appendTo(feedback);
+                
+                 $(document).trigger("ASSET_COMPLETE");
+
+             }
+
              feedback.show();
              feedback.focus();
          });

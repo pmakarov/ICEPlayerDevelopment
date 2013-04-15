@@ -9,7 +9,7 @@ var menuMarkUp = "";
 var _nodes = new Array();
 var _resources = new Array();
 var prevFolder;
-var _scorm;
+var _hostAPI;
 var _hasHost = false;
 var lmsConnected = false;
 var lessonStatus = "";
@@ -37,13 +37,50 @@ function Player(xml)
     parseXML(xml);
     buildInterface(xml);
     //assignKeyListeners();
-    if (_hasHost && _scorm !== "") {
-        bindToSCORMHost();
+  
+    if (_hasHost && _hostAPI != "") {
+      
+        switch(_hostAPI)
+        {
+            case "SCORM 1.2":
+            bindToSCORMHost();
+            break;
+
+        case "ICEDB":
+            bindToICEDBHost();
+            break;
+
+            default:
+            break;
+        }
+
+       
     }
-   // else if(_hasHost
+   
+
 	handleCourse(_nodes[0]);
 
 }
+
+//////////////////////////
+/**
+* ...
+* @author Paul Makarov
+* BIND TO ICEDB i.e. LOCAL DATA stored via shared object using a Flash implementation
+*/
+//////////////////////////
+function bindToICEDBHost() {
+
+    //TODO pull user credentials from a login div
+    //DEBUG: using a non md5 hash string concat to derrive LSO
+    var username = "admin";
+    var password = "happy123";
+
+    loadLocalDataManager(username, password);
+
+
+}
+
 function scormConnect()
 {
     var result = false;
@@ -748,8 +785,8 @@ function parseXML(xml) {
     _contentMode = $(xml).find('system > contentMode').text();
     _branding = $(xml).find('system > branding').text();
     _hasHost = $(xml).find('system > host').text();
-    _hasHost = (_hasHost ) ? true : false;
-    _scorm = $(xml).find('system > hostAPI').text();
+    _hasHost = (_hasHost) ? true : false;
+    _hostAPI = $(xml).find('system > hostAPI').text();
     _title = $(xml).find('module > title:first').text();
    
 
@@ -1232,6 +1269,46 @@ function loadDefault(item) {
            // }, 500);
            break;
 
+       case ".swf?pri":
+           var flashvars =
+			{
+			    //-----------------------------------------------------------
+			    //Added vars for old player swf to play interaction correctly
+			    //-----------------------------------------------------------
+			    "interactionId": Number(item.substr(0, pos))
+			};
+
+           //alert(item.substr(0,pos));
+
+           var params = {
+               menu: "false",
+               scale: "exactFit",
+               allowFullscreen: "false",
+               allowScriptAccess: "always",
+               wmode: "transparent",
+               bgcolor: "#111111",
+               swfliveconnect: true
+
+           };
+           var attributes = {
+               //id: "Flash",
+               id: "myPRIME",
+               name: "Flash",
+               swfliveconnect: true
+           };
+           $("#mainContent").html("");
+           if ($("#mainContent object")) {
+               var load = $('<div id="contentContainer"></div>');
+               load.appendTo("#mainContent");
+           }
+           swfobject.embedSWF("/player/swftest/myPRIME.swf", "contentContainer", "100%", hP, "10.0.0", "expressInstall.swf", flashvars, params, attributes,
+				function () {
+				    $("#loadAnimation").remove();
+				}
+           );
+           break;
+
+       case ".php":   
        case ".htm":
        case ".html":
            var iframe = $('<iframe />', {
@@ -1266,19 +1343,130 @@ function loadDefault(item) {
     }
 }
 
+//////////////////////////
+/**
+* New functions for the handling of the correct asset in question.
+*/
+//////////////////////////
+function handleBranchAsset(nid) {
 
-function handlePlayerFocus () {
-   // alert("WEEHOOO");
+    if (nid === null) {
+        alert('Null id passed!');
+    }
+    else {
+        $.ajax({
+            //Retrieve User's course data information.
+            type: "POST",
+            //url: "/coursedata/course_data/retrieve.json",
+            url: "/coursedata/course_data/coursehandle/",
+            data: { 'nid': nid },
+
+            dataType: 'json',
+            success: function (msg) {
+                //console.log("node.list:");
+                console.log(msg);
+                switch (msg) {
+                    case "false":
+                        alert("returned false");
+                        break;
+                    case "next":
+                        playNextScene();
+                        break;
+                    default:
+                        console.log("Branch Logic!");
+                        stepNumber = getStepByNid(msg);
+                        //alert("Step number is: " + stepNumber);
+                        //alert(getStepByNid(nid));
+                        //alert("Nid is : " + nid);
+                        handleCourse(_nodes[stepNumber]);
+                }
+            },
+            error: function (msg) {
+                alert("Err!");
+                console.log(msg);
+            }
+        });
+    }
+}
+function getStepByNid(nid) {
+    if (nid === null) {
+        alert("Null nid in getStepByNid!");
+        return null;
+    }
+    else {
+        for (var n = 0; n < _nodes.length; n++) {
+            if (_nodes[n].id == nid) {
+                //alert("N is : " + n);
+                return n;
+            }
+        }
+    }
+}
+function getNidByStep(targetStep) {
+    if (targetStep === null) {
+        alert("Null step number in getNidByStep!");
+    }
+    else {
+        return _nodes[targetStep].id;
+    }
+}
+
+function handlePlayerFocus() {
+    // alert("WEEHOOO");
     //$('#player').focus();
-   /* setTimeout(function () 
+    /* setTimeout(function () 
     {
-        $('#player').focus();
+    $('#player').focus();
     }, 500);
 
-*/
+    */
 
     return false;
 }
+
+//Service call that sees what/how it get's data
+
+function getCustomData(nid) {
+
+    $.ajax({
+        //Retrieve User's course data information.
+        type: "POST",
+        url: "/coursedata/course_data/customphpgetter",
+        data: { 'nid': nid },
+        dataType: 'json',
+        success: function (msg) {
+            console.log('hit!');
+            document['myPRIME'].sendCustomGetData(msg);
+            //return msg;
+            //sendCustomGetData(msg);
+        },
+        error: function (msg) {
+            alert("Err!");
+            console.log(msg);
+        }
+    });
+}
+//Service call that sees what/how it set's data
+function setCustomData(nid, data) {
+
+    $.ajax({
+        //Retrieve User's course data information.
+        type: "POST",
+        url: "/coursedata/course_data/customphp",
+        data: { 'nid': nid,
+            'data': data
+        },
+        dataType: 'json',
+        success: function (msg) {
+
+        },
+        error: function (msg) {
+            alert("Err!");
+            console.log(msg);
+        }
+    });
+}
+
 function handlePlayerTerminate()
 {
     var complete = false;
@@ -1299,25 +1487,88 @@ function handlePlayerTerminate()
     window.close();
 }
 
-// when video ends
+// For local video to auto next
 $(document).bind('ASSET_COMPLETE', function () {
-    //alert('The video has completed playing"');
     //TODO: code conditional: if current node == complete && setComponentDataById true
     playNextScene();
 });
-
 function onAssetComplete(data) {
     $(document).trigger(data);
 }
+//notifies Player of video events
 function onNotifyPlayerStatus(data) {
     //alert(data);
     console.log(data);
 }
 
-function setComponentDataById(data,id) {
 
-    return true;
+//Local Data Manager hooks
+function onDataManagerLoaded(data) {
+    $(document).trigger(data);
+}
+$(document).bind('DATA_MANAGER_LOADED', function () {
+    console.log("Local Data Manager ICEDB ready!");
+});
+
+
+//TODO: build API for ICEDB
+function setComponentDataById(data, id) {
+    console.log(data);
+    var arr = new Array();
+    var obj = { 'id': id, "stuff": "other stuff" };
+    var obj2 = { 'componentID': id, "stuff": "other stuff" };
+    var data = { "answerID": "c1", "answerData": data };
+    arr.push(obj);
+    arr.push(obj2);
+    arr.push(data);
+    thisMovie("LDM").setComponentDataById(arr);
 }
 function getComponentDataById(id) {
-    return true;
+    thisMovie("LDM").getComponentDataById(id);
+   
 }
+
+function loadLocalDataManager(usr, pwd) {
+    var flashvars =
+			{
+			    //src: "assets/media/" + str,
+                username: usr + pwd,
+			    src: "ICEDB.swf",
+			    data: "myPRIME_taxonomy.xml",
+			    width: "1",
+			    height: "1"
+			};
+
+
+    var params = {
+        menu: "false",
+        scale: "exactfit",
+        allowFullscreen: "true",
+        allowScriptAccess: "always",
+        wmode: "window",
+        bgcolor: "#000000",
+        quality: "high",
+        seamlessTabbing: "true"
+    };
+    var attributes = {
+        id: "LDM",
+        name: "LDM"
+    };
+
+    if ($("#branding")) {
+       
+        var load = $('<div id="localDataManagerContainer"></div>');
+        load.appendTo("#branding");
+    }
+
+    //swfobject.embedSWF("ICEMediaPlayer.swf", "altContent", "720", "435", "10.0.0", "../expressInstall.swf", flashvars, params, attributes);
+    swfobject.embedSWF("ICEDB.swf", "localDataManagerContainer", "1", "1", "10.0.0", "expressInstall.swf", flashvars, params, attributes,
+           function () {
+               setTimeout(function () {
+                   $("#loadAnimation").remove();
+               }, 500);
+               // $.throbber.hide();
+           }
+
+            );
+       }
